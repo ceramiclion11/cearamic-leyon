@@ -79,6 +79,11 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . . . . . . . . . . . . . 
 `)
 })
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (ceramic_lion.vy == 0) {
+        ceramic_lion.vy += -150
+    }
+})
 let ceramic_lion: Sprite = null
 ceramic_lion = sprites.create(img`
 . . . . . . . . . . . . . . . . 
@@ -98,8 +103,8 @@ ceramic_lion = sprites.create(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, SpriteKind.Player)
-controller.moveSprite(ceramic_lion)
-ceramic_lion.ay += 500
+controller.moveSprite(ceramic_lion, 100, 0)
+ceramic_lion.ay += 350
 tiles.setTilemap(tiles.createTilemap(
             hex`1000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004040000000000000000000000000000000004040000000000000000000404040000000000000000000004040400000000000000000404040400000000000000000000000000000000000000000000000000000000000000000000000000000000000000`,
             img`
@@ -123,4 +128,5 @@ tiles.setTilemap(tiles.createTilemap(
             [myTiles.tile0,sprites.builtin.forestTiles1,sprites.builtin.forestTiles2,sprites.builtin.forestTiles3,myTiles.tile1],
             TileScale.Sixteen
         ))
+scene.setBackgroundColor(9)
 scene.cameraFollowSprite(ceramic_lion)
