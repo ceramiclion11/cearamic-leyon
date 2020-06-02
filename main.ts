@@ -57,9 +57,9 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `)
+    ceramic_lion.image.flipX()
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    let mySprite: Sprite = null
     ceramic_lion.setImage(img`
 . . . . . . . . . . . . . . . . 
 . . . 4 4 4 . . . . . . . . . . 
@@ -78,7 +78,6 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `)
-    mySprite.image.flipX()
 })
 let ceramic_lion: Sprite = null
 ceramic_lion = sprites.create(img`
