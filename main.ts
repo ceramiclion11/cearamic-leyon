@@ -398,7 +398,7 @@ function level_start () {
     }
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (ceramic_lion.vx < 0) {
+    if (facing_left == true) {
         projectile = sprites.createProjectileFromSprite(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -417,7 +417,8 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . e e e e e e e e . . . . 
 . . . . . . . . . . . . . . . . 
 `, ceramic_lion, -100, 0)
-    } else {
+        facing_left = false
+    } else if (facing_right == true) {
         projectile = sprites.createProjectileFromSprite(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -436,6 +437,29 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . e e e e e e e e . . . . 
 . . . . . . . . . . . . . . . . 
 `, ceramic_lion, 100, 0)
+        facing_right = false
+    } else if (facing_straight == true) {
+        projectile = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . e e e e e e e e e e e e . . 
+. . . e d e d e d e d e e . . . 
+. . . e e d e d e d e d e . . . 
+. . e e d e d e d e d e d e . . 
+. e e d e d e d e d e d e d e . 
+. e d e d e d e d e d e d e e . 
+. e e d e d e d e d e d e d e . 
+. e d e d e d e d e d e d e e . 
+. . e d e d e d e d e d e e . . 
+. . . e d e d e d e d e e . . . 
+. . . . e e e e e e e e . . . . 
+. . . . . . . . . . . . . . . . 
+`, ceramic_lion, 0, -100)
+        facing_straight = false
+    } else {
+    	
     }
 })
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile5, function (sprite, location) {
@@ -483,6 +507,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.coin, function (sprite, otherSpr
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
     ceramic_lion.destroy(effects.fire, 1000)
     game.over(false)
+    if (ceramic_lion.vy == 0) {
+        ceramic_lion.vy += -150
+    }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
@@ -508,12 +535,21 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . . . . . . . . . . . . . 
 `)
 })
+controller.combos.attachCombo("\"UU\"", function () {
+    if (ceramic_lion.vy == 0) {
+        ceramic_lion.vy += -150
+    }
+    ceramic_lion.vy += -100
+})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (ceramic_lion.vy == 0) {
         ceramic_lion.vy += -150
     }
 })
 let projectile: Sprite = null
+let facing_straight = false
+let facing_right = false
+let facing_left = false
 let coin: Sprite = null
 let reaper: Sprite = null
 let ceramic_lion: Sprite = null
@@ -559,8 +595,29 @@ game.onUpdate(function () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `)
-    } else {
-        ceramic_lion.setImage(img`
+    } else if (ceramic_lion.vy == 0) {
+        if (ceramic_lion.vx < 0) {
+            ceramic_lion.setImage(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . 4 4 . . . . 
+. . . . . . . . . 4 . . 4 . . . 
+. 5 5 5 5 5 . . 4 . . . 4 . . . 
+. 5 4 4 4 5 . . . . . . 4 . . . 
+. 5 8 8 4 5 . . . . . . 4 . . . 
+. 5 8 8 4 5 . . . . . 4 . . . . 
+. 5 5 5 5 5 . . . . 4 . . . . . 
+. . . 4 4 4 4 4 4 4 4 . . . . . 
+. . . 4 4 4 4 4 4 4 4 . . . . . 
+. . . 4 4 4 4 4 4 4 4 . . . . . 
+. . . . 4 4 4 4 4 4 4 . . . . . 
+. . . . 4 . 4 . 4 . 4 . . . . . 
+. . . . 4 . 4 . 4 . 4 . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`)
+            facing_left = true
+        } else if (ceramic_lion.vx > 0) {
+            ceramic_lion.setImage(img`
 . . . . . . . . . . . . . . . . 
 . . . 4 4 4 . . . . . . . . . . 
 . . 4 . . . 4 . . . . 5 5 5 5 5 
@@ -578,8 +635,29 @@ game.onUpdate(function () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `)
-    }
-    if (controller.left.isPressed()) {
-        ceramic_lion.image.flipX()
+            facing_right = true
+        } else if (ceramic_lion.vx == 0) {
+            ceramic_lion.setImage(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . 5 5 5 5 5 5 5 5 5 . . . . 
+. . 5 5 4 4 4 4 4 4 4 5 5 . . . 
+. . 5 4 4 4 4 4 4 4 4 4 5 . . . 
+. . 5 4 4 4 4 4 4 4 4 4 5 . . . 
+. . 5 4 8 8 4 4 4 8 8 4 5 . . . 
+. . 5 4 8 8 4 4 4 8 8 4 5 . . . 
+. . 5 4 4 4 4 4 4 4 4 4 5 . . . 
+. . 5 4 4 4 4 4 4 4 4 4 5 . . . 
+. . 5 4 4 4 2 2 2 4 4 4 5 . . . 
+. . 5 5 4 4 4 4 4 4 4 5 5 . . . 
+. . . 5 5 5 5 5 5 5 5 5 . . . . 
+. . . . . 4 4 4 4 4 . . . . . . 
+. . . . . 4 4 4 4 4 . . . . . . 
+`)
+            facing_straight = true
+        } else {
+        	
+        }
     }
 })
