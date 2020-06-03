@@ -1,7 +1,8 @@
 {
     "name": "cearamic leyon",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "animation": "*"
     },
     "description": "",
     "files": [
