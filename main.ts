@@ -136,6 +136,63 @@ e e e e e . . e e e e e . . . e
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `
+    //% blockIdentity=images._tile
+    export const tile7 = img`
+e e e e e e e e e e e e e e e e 
+e e e e e e e e e e e e d e e e 
+e e e e e d e e e e e e d e d e 
+e e e e e e e e e d d e e e e e 
+e d e e e e e e e e d e e e e e 
+e e e e e d e e e e e e e e d e 
+e e e e e e e e d e e e e e e e 
+e e d e e e e e e e e e d e e e 
+e e e e e e e e e e e e e e e d 
+e e e e e e e e d e e e d e e e 
+e e e e e e e e e e e e e e e e 
+e e d e e e e e d e e e e e e e 
+e e e e e e e e e e e e e e e e 
+e e e e e . . e e e e e . . . e 
+. . . e . . . . . . e . . . . . 
+. . . . . . . . . . . . . . . . 
+`
+    //% blockIdentity=images._tile
+    export const tile8 = img`
+e e e e e e e e e e e e e e e e 
+e e e e e e e e e e e e d e e e 
+e e e e e d e e e e e e d e d e 
+e e e e e e e e e d d e e e e e 
+e d e e e e e e e e d e e e e e 
+e e e e e d e e e e e e e e d e 
+e e e e e e e e d e e e e e e e 
+e e d e e e e e e e e e d e e e 
+e e e e e e e e e e e e e e e d 
+e e e e e e e e d e e e d e e e 
+e e e e e d e e e e e e e e e e 
+e e d e e e e e d e e e e d e e 
+e e e e e e e e e e e e e e e e 
+e e e d e e e e e e e e e d e e 
+e e e e e e e e e d e e e e e d 
+e e e e e e d e e e e e e e e e 
+`
+    //% blockIdentity=images._tile
+    export const tile9 = img`
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 e 7 7 e 7 7 e 7 e e 7 e 7 7 
+7 e 7 7 e e e e e 7 e e 7 e 7 e 
+e e e e e e e e e 7 7 e e e 7 e 
+e e e e e d e e e e 7 e e e e e 
+e e e e e e e e e e e e e e e e 
+e e d e e e e e e e e e d e e e 
+e e e e e e e e e e e e e e e d 
+e e e e e e e e d e e e d e e e 
+e e e e e e e e e e e e e e e e 
+e e d e e e e e d e e e e e e e 
+e e e e d e d e e e e e d e e e 
+e e e e d e e e e e e e e e e e 
+e d e e d d d e e e d e e d e e 
+e e e e e e e e e e e e e e e e 
+`
 }
 function level_start () {
     tiles.placeOnRandomTile(ceramic_lion, myTiles.tile3)
@@ -160,33 +217,65 @@ function level_start () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `,
-            [myTiles.tile0,sprites.builtin.forestTiles1,sprites.builtin.forestTiles2,sprites.builtin.forestTiles3,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,sprites.dungeon.hazardLava1,sprites.dungeon.hazardWater,sprites.dungeon.hazardLava0,myTiles.tile6],
+            [myTiles.tile0,sprites.builtin.forestTiles1,sprites.builtin.forestTiles2,sprites.builtin.forestTiles3,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,sprites.dungeon.hazardLava1,sprites.dungeon.hazardWater,sprites.dungeon.hazardLava0,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9],
             TileScale.Sixteen
         ))
     } else if (current_level == 1) {
         tiles.setTilemap(tiles.createTilemap(
-            hex`20001200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000004000000000000000000040404040404040000000000000000000000010004000100000000020000000000000000000000000000000000000000000000000100000204020001000400000200000000010400000000000000000000040000000400010001000000010004010000020100010000000000000000000000000400020000000000000000040100000401000000040000000000040000000400010002000000000000020001000000010000000001000000000000000000010000000100040000040001000000040000000000000000040004020004000000040000040000000201000000000001000000010004000200020000000400000001000000000200010000010004000000010000000100000400000000000000040000040000010000000004000104000000000200000000000100000402050001000201010400000004000100000100000000010000000100000000000101000004010000010200000100020000000001000402040204020000010000000000020100000000010400000001020000000000010101010101000000000000000001000000000000010000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`,
+            hex`1000320000000000000000000000000000000000000000000000000000000004000404040000000000000000000400000000000500000000000000000000000a00010101000000000000000000040009000000000000000000000000000000090000000000000000000000000004000900000000000000000004000404000009000000000000000000000a000001000800000000000000000000090000000000000000000000000000040900000000000000000000000004000008000000000000000000000400000100000000000000000000000a000100000000000000000000000000090004000000000000000000000000000900000000000000000000000000000009000400000000000000000000000000090000000000000000000000000000000900040000000000000000000000000008000000000000000000000000000000000400040004000400000400000000000101010101010101000100040000000000000000000000000000010004000000000000000000000000000001000000000000000000000000000000000104000a000000000000000000000000000000090000000000000000000000000004000900000000000000000000000000000009000000000000040404000000000400090000000a0001010101010000000000080000000904000000000001010101010000000009040000000000000000000000000000080004040404040000000000000000000000010101010100040a00000000000000000000000000040009000000000000000000000000000004090000000000000000000000000a000008000000000000000000000000090004000000000000000000000000000904000a0000000000000000000000000900040900000000000000000000000009040009000000000000000000000000090004090000000000000000000000000800000900000000000000000000000000000009000000000000000000000000000100080000000000000000000000000100000000000000000000000101010100000000000000000000000000000000000000000000000101010101000000000000000000000000000000000000000000000000000000`,
             img`
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. 2 . . . 2 . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . 2 . . . . . . 2 . . . . . . . . . 2 . . . . . . . . . . . 
-. . . . . . 2 . 2 . . . 2 . . 2 . . . 2 . 2 . . . . . . . . . . 
-. . . . . . . . . . . . . . 2 . . . 2 . . . . . . . . . . . . . 
-. . 2 . . . . . . . . . . 2 . . . 2 . . . . 2 . . . . . . . . . 
-2 . . . 2 . . . . . . 2 . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . 2 . . . . . 2 . . . 2 . . . . . . . . . . . . 
-. 2 . . . . . . 2 . . 2 . . . . . 2 . . . 2 . . . . . . . . . . 
-. . . . . . 2 . . . . . . 2 . . . . . . . . . . . 2 . . . . . . 
-2 . . 2 2 . . . . . . 2 . . 2 . . . . 2 . . . 2 . . . . . 2 2 . 
-. . 2 . . 2 . . . 2 . . . . . . 2 . . . . . . . . . 2 . . . . . 
-. 2 . . . . 2 . . . . 2 . . . . . . 2 2 2 2 2 2 . . . . . . . . 
-2 . . . . . . 2 . . . . 2 . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . 2 . 2 2 2 
+. . . . . . . . . . . 2 . . . . 
+. . . . . . . . . . . 2 . . . . 
+. . . . . . . . . . . 2 . . . . 
+. . . . . . . . . . . 2 . . . . 
+. . . . . . 2 . . 2 . 2 . . . . 
+. . . . . . 2 . . . . . . . . . 
+. . . . . . 2 . . . . . . . . . 
+. . . . . . 2 . . . . . . . . . 
+. . . . 2 . . . . . . . . . . . 
+2 . 2 . . . . . . . . . . . . . 
+2 . . . . . . . . . . . . . . . 
+2 . . . . . . . . . . . . . . . 
+2 . . . . . . . . . . . . . . . 
+2 . . . . . . . . . . . . . . . 
+2 . . . . . . . . . . . . . . . 
+2 . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+2 2 2 2 2 2 2 2 . 2 . . . . . . 
+. . . . . . . . . . 2 . . . . . 
+. . . . . . . . . . . 2 . . . . 
+. . . . . . . . . . . . 2 . . 2 
+. . . . . . . . . . . . . . . 2 
+. . . . . . . . . . . . . . . 2 
+. . . . . . . . . . . . . . . 2 
+. . . . . . . . . . . . . . . 2 
+. . . 2 . 2 2 2 2 2 . . . . . 2 
+. . . 2 . . . . . . 2 2 2 2 2 . 
+. . . 2 . . . . . . . . . . . . 
+. . . 2 . . . . . . . . . . . . 
+. . . . . 2 2 2 2 2 . . 2 . . . 
+. . . . . . . . . . . . 2 . . . 
+. . . . . . . . . . . . 2 . . . 
+. . . . . . . . . 2 . . 2 . . . 
+. . . . . . . . 2 2 . . . . . . 
+. . . . . . . . . 2 . . 2 . . . 
+. . . . . . . . . 2 . . 2 . . . 
+. . . . . . . . . 2 . . 2 . . . 
+. . . . . . . . . 2 . . 2 . . . 
+. . . . . . . . . 2 . . 2 . . . 
+. . . . . . . . . . . . 2 . . . 
+. . . . . . . . . . 2 . 2 . . . 
+. . . . . . . . . 2 . . . . . . 
+. . . . . 2 2 2 2 . . . . . . . 
+. . . . . . . . . . . . . . . . 
+2 2 2 2 2 . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
 `,
-            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,sprites.builtin.forestTiles0,myTiles.tile6],
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,sprites.builtin.forestTiles0,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9],
             TileScale.Sixteen
         ))
     } else {
@@ -249,8 +338,8 @@ function level_start () {
         tiles.placeOnTile(reaper, value)
         tiles.setTileAt(value, myTiles.tile0)
     }
-    for (let value of tiles.getTilesByType(myTiles.tile4)) {
-        coin = sprites.create(img`
+    for (let value2 of tiles.getTilesByType(myTiles.tile4)) {
+        coin2 = sprites.create(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -268,10 +357,10 @@ function level_start () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, SpriteKind.coin)
-        tiles.placeOnTile(coin, value)
-        tiles.setTileAt(value, myTiles.tile0)
+        tiles.placeOnTile(coin2, value2)
+        tiles.setTileAt(value2, myTiles.tile0)
         animation.runImageAnimation(
-        coin,
+        coin2,
         [img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -514,7 +603,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 let projectile: Sprite = null
-let coin: Sprite = null
+let coin2: Sprite = null
 let reaper: Sprite = null
 let ceramic_lion: Sprite = null
 let current_level = 0
